@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f7;">
+    <tr>
+      <td align="center" style="padding: 24px 16px;">
+        <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width: 640px; width: 100%;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #1a56db; padding: 32px 40px; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">SciArgus Weekly</h1>
+              <p style="margin: 8px 0 0; color: #bfdbfe; font-size: 16px;">{{ newsletter.date_range }}</p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color: #ffffff; padding: 32px 40px;">
+
+              <!-- Topic sections -->
+              {% for section in newsletter.topic_sections %}
+              <div style="margin-bottom: 32px;">
+                <h2 style="margin: 0 0 16px; color: #1a56db; font-size: 20px; font-weight: 600; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px;">{{ section.label }}</h2>
+
+                {% for paper in section.papers %}
+                <div style="margin-bottom: 24px; padding: 16px; background-color: #f9fafb; border-radius: 6px; border-left: 3px solid #1a56db;">
+                  <a href="{{ paper.url }}" style="color: #1a56db; font-size: 16px; font-weight: 600; text-decoration: none; line-height: 1.4;">{{ paper.title }}</a>
+                  <p style="margin: 6px 0 0; color: #6b7280; font-size: 13px;">{{ paper.formatted_authors }}</p>
+                  <p style="margin: 4px 0 0; color: #9ca3af; font-size: 12px;">
+                    {% if paper.journal %}{{ paper.journal }} &middot; {% endif %}{{ paper.publication_date }}
+                  </p>
+
+                  {% if paper.summary %}
+                  <div style="margin-top: 12px; padding: 12px; background-color: #eff6ff; border-radius: 4px;">
+                    <p style="margin: 0 0 4px; color: #1a56db; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Why this is cool</p>
+                    <p style="margin: 0; color: #374151; font-size: 14px; line-height: 1.5;">{{ paper.summary }}</p>
+                  </div>
+                  {% endif %}
+
+                  {% if paper.abstract %}
+                  <details style="margin-top: 10px;">
+                    <summary style="color: #6b7280; font-size: 13px; cursor: pointer;">Show abstract</summary>
+                    <p style="margin: 8px 0 0; color: #4b5563; font-size: 13px; line-height: 1.5;">{{ paper.abstract }}</p>
+                  </details>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div>
+              {% endfor %}
+
+              <!-- Author section -->
+              {% if newsletter.author_papers %}
+              <div style="margin-bottom: 32px;">
+                <h2 style="margin: 0 0 16px; color: #6d28d9; font-size: 20px; font-weight: 600; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px;">Papers by Tracked Authors</h2>
+
+                {% for paper in newsletter.author_papers %}
+                <div style="margin-bottom: 24px; padding: 16px; background-color: #f9fafb; border-radius: 6px; border-left: 3px solid #6d28d9;">
+                  <a href="{{ paper.url }}" style="color: #1a56db; font-size: 16px; font-weight: 600; text-decoration: none; line-height: 1.4;">{{ paper.title }}</a>
+                  <p style="margin: 6px 0 0; color: #6b7280; font-size: 13px;">{{ paper.formatted_authors }}</p>
+                  <p style="margin: 4px 0 0; color: #9ca3af; font-size: 12px;">
+                    {% if paper.journal %}{{ paper.journal }} &middot; {% endif %}{{ paper.publication_date }}
+                    {% if paper.matched_topic %}&middot; Related to: {{ paper.matched_topic }}{% endif %}
+                  </p>
+
+                  {% if paper.summary %}
+                  <div style="margin-top: 12px; padding: 12px; background-color: #f5f3ff; border-radius: 4px;">
+                    <p style="margin: 0 0 4px; color: #6d28d9; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Why this is cool</p>
+                    <p style="margin: 0; color: #374151; font-size: 14px; line-height: 1.5;">{{ paper.summary }}</p>
+                  </div>
+                  {% endif %}
+
+                  {% if paper.abstract %}
+                  <details style="margin-top: 10px;">
+                    <summary style="color: #6b7280; font-size: 13px; cursor: pointer;">Show abstract</summary>
+                    <p style="margin: 8px 0 0; color: #4b5563; font-size: 13px; line-height: 1.5;">{{ paper.abstract }}</p>
+                  </details>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f9fafb; padding: 24px 40px; border-radius: 0 0 8px 8px; border-top: 1px solid #e5e7eb;">
+              <p style="margin: 0; color: #9ca3af; font-size: 13px; text-align: center;">
+                Curated by SciArgus &middot; Powered by <a href="https://openalex.org" style="color: #6b7280;">OpenAlex</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
