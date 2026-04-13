@@ -1,7 +1,7 @@
+Alces
 bioRxiv
 arXiv
 EcoEvoRxiv
-EarthArXiv
 OSF Preprints
 Nature
 Science
