@@ -1,5 +1,5 @@
 #Machine Learning and AI
-Research on the use of machine learning and AI to advance the measurement and monitoring of biodiversity and conservation efforts. This includes the development of new foundation models across modalities (such as text, remote sensing, and images) with ecological applications, as well as novel benchmarks that measure AI capabilities in this field. Additionally, we welcome thought leadership and perspectives on the promises and perils of integrating AI into ecology.
+Research on the use of machine learning and AI to advance the study of ecology. This includes methods to study life history questions, reproduction, morphology, physiology, movement, and cognition, as well as novel benchmarks that measure AI capabilities in this field. Additionally, we welcome thought leadership and perspectives on the promises and perils of integrating AI into ecology.
 
 #Nutritional Ecology
 Research integrating nutrition with population and quantitative ecology to understand behavior, resource allocation, and life history in large mammals. Work that seeks to reveal the mechanistic underpinnings of individual fitness and population dynamics, with a particular emphasis on how nutritional status interacts with environmental variability, disease, predation, and climate change to shape the trajectories of long-lived species populations.
