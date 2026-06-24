@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 import time
 from datetime import datetime, timedelta
 
@@ -15,6 +16,7 @@ MAILTO = "sciargus.grm@gmail.com"
 SELECT_FIELDS = "id,title,authorships,primary_location,publication_date,abstract_inverted_index,doi"
 POLITE_DELAY = 0.5
 MAX_JOURNAL_IDS_PER_BATCH = 50
+OPENALEX_API_KEY = os.environ.get("OPENALEX_SECRET")
 
 
 def _date_range() -> tuple[str, str]:
@@ -66,6 +68,8 @@ def _fetch_works(
 ) -> list[Paper]:
     params["mailto"] = MAILTO
     params["select"] = SELECT_FIELDS
+    if OPENALEX_API_KEY:
+        params["api_key"] = OPENALEX_API_KEY
     papers = []
     try:
         resp = session.get(f"{OPENALEX_BASE}/works", params=params, timeout=30)

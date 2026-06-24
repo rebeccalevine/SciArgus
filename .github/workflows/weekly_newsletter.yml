@@ -22,4 +22,5 @@ jobs:
           GOOGLE_APP_PASSWORD: ${{ secrets.GOOGLE_APP_PASSWORD }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+          OPENALEX_SECRET: ${{ secrets.OPENALEX_SECRET }}
         run: python -m src.main

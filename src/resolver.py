@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import time
 from pathlib import Path
 
@@ -14,6 +15,7 @@ CACHE_TTL_DAYS = 30
 OPENALEX_BASE = "https://api.openalex.org"
 MAILTO = "sciargus.grm@gmail.com"
 POLITE_DELAY = 0.5
+OPENALEX_API_KEY = os.environ.get("OPENALEX_SECRET")
 
 
 def _load_cache() -> dict:
@@ -40,6 +42,8 @@ def _resolve_one(endpoint: str, name: str, session: requests.Session) -> str | N
         "select": "id,display_name",
         "mailto": MAILTO,
     }
+    if OPENALEX_API_KEY:
+        params["api_key"] = OPENALEX_API_KEY
     if endpoint == "authors":
         params["sort"] = "cited_by_count:desc"
 

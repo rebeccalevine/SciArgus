@@ -221,8 +221,11 @@ Secrets are private values that GitHub Actions can use but that never appear in 
 | `GOOGLE_APP_PASSWORD` | The 16-character app password from step 4 | `abcd efgh ijkl mnop` |
 | `SENDER_EMAIL` | The Gmail address you created the app password for | `my-sciargus@gmail.com` |
 | `RECEIVER_EMAIL` | The email address where you want to receive the newsletter | `yourname@university.edu` |
+| `OPENALEX_SECRET` | *(Optional)* OpenAlex API key for higher rate limits | `openalex_...` |
 
 The sender and receiver can be the same address if you like.
+
+> **Optional: OpenAlex API Key.** Without a key, SciArgus uses the OpenAlex polite pool (identified by `mailto`). Under heavy use this may trigger 429 rate-limit errors. To avoid this, [request a free API key from OpenAlex](https://docs.openalex.org/how-to-use-the-api/api-key) and add it as the `OPENALEX_SECRET` secret. When set, the key is sent as an `api_key` query parameter on every OpenAlex request, granting higher rate limits.
 
 ### 6. Customise Your Config Files
 
